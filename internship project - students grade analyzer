@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main() {
+    int numStudents;
+
+    // Get the number of students
+    printf("Enter the number of students: ");
+    scanf("%d", &numStudents);
+
+    // Check if the number of students is valid
+    if (numStudents <= 0) {
+        printf("Invalid number of students. Please enter a positive integer.\n");
+        return 1; // Exit with an error code
+    }
+
+    // Initialize variables
+    int scores[numStudents];
+    int total = 0;
+    int highest = 0;
+    int lowest = 100; // Assuming grades are between 0 and 100
+
+    // Get scores from the user
+    for (int i = 0; i < numStudents; i++) {
+        printf("Enter the score for student %d: ", i + 1);
+        scanf("%d", &scores[i]);
+
+        // Update total
+        total += scores[i];
+
+        // Update highest and lowest
+        if (scores[i] > highest) {
+            highest = scores[i];
+        }
+        if (scores[i] < lowest) {
+            lowest = scores[i];
+        }
+    }
+
+    // Calculate average
+    float average = (float)total / numStudents;
+
+    // Display results
+    printf("\nResults:\n");
+    printf("Average score: %.2f\n", average);
+    printf("Highest score: %d\n", highest);
+    printf("Lowest score: %d\n", lowest);
+
+    return 0; // Exit with success
+}
